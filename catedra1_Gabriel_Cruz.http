@@ -1,0 +1,6 @@
+@catedra1_Gabriel_Cruz_HostAddress = http://localhost:5125
+
+GET {{catedra1_Gabriel_Cruz_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
