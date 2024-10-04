@@ -3,7 +3,7 @@ namespace Catedra1_Gabriel_Cruz.src.DTOs
 {
     public class UserDTO
     {
-        [Required]
+        [Required(ErrorMessage = "Este campo es requerido")]
         public string Rut { get; set; } = string.Empty;
         [Required(ErrorMessage = "Este campo es requerido")]
         [StringLength(100, MinimumLength = 3, ErrorMessage = "El nombre debe tener entre 3 y 100 caracteres.")]
@@ -14,6 +14,7 @@ namespace Catedra1_Gabriel_Cruz.src.DTOs
         [RegularExpression("^(masculino|femenino|otro|prefiero no decirlo)$", ErrorMessage = "Las categorías permitidas son: 'masculino', 'femenino', 'otro' o 'prefiero no decirlo'.")]
         public string Genero { get; set; } = string.Empty;
         [Required(ErrorMessage = "Este campo es requerido")]
+        
         public DateOnly FechaNacimiento { get; set; } = new DateOnly();
     }
 }
