@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using Bogus.DataSets;
 
 namespace Catedra1_Gabriel_Cruz.src.Models
 {
@@ -17,6 +16,7 @@ namespace Catedra1_Gabriel_Cruz.src.Models
         [RegularExpression("^(masculino|femenino|otro|prefiero no decirlo)$", ErrorMessage = "Las categorías permitidas son: 'masculino', 'femenino', 'otro' o 'prefiero no decirlo'.")]
         public string Genero { get; set; } = string.Empty;
         [Required(ErrorMessage = "Este campo es requerido")]
-        public DateTime FechaNacimiento { get; set; }
+        
+        public DateOnly FechaNacimiento { get; set; } = new DateOnly();
     }
 }
