@@ -7,7 +7,7 @@ namespace Catedra1_Gabriel_Cruz.src.Interfaces
         Task <IEnumerable<UserDTO>> GetUsers();
         Task <User> CreateUser(UserDTO user);
         Task UpdateUser(int ID, UserDTO userDTO);
-        Task DeleteUser(string rut);
+        Task DeleteUser(int ID);
         Task <bool> ExistUser(string rut);
         Task <bool> ExistUserId(int Id);
         Task <UserDTO> GetUserDTO (string rut);

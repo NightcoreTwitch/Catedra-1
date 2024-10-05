@@ -26,8 +26,6 @@ namespace Catedra1_Gabriel_Cruz.src.repositories
         }
         public async Task <User> CreateUser(UserDTO userDTO)
         {
-            if (await ExistUser(userDTO.Rut)) return null;
-            if (userDTO.FechaNacimiento >= DateOnly.FromDateTime(DateTime.Now));
             var newUser = new User
             {
                 Rut = userDTO.Rut,
@@ -42,7 +40,6 @@ namespace Catedra1_Gabriel_Cruz.src.repositories
         }
         public async Task UpdateUser(int ID, UserDTO userDTO)
         {
-            if (!await ExistUserId(ID)) return;
             var user = await _context.Users.FindAsync(ID);
             user.Rut = userDTO.Rut;
             user.Nombre = userDTO.Nombre;
@@ -50,6 +47,12 @@ namespace Catedra1_Gabriel_Cruz.src.repositories
             user.Genero = userDTO.Genero;
             user.FechaNacimiento = userDTO.FechaNacimiento;
             _context.Update(user);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteUser(int ID)
+        {
+            var user = await _context.Users.FindAsync(ID);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
         public async Task <bool> ExistUser(string rut)
