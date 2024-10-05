@@ -59,26 +59,33 @@ namespace Catedra1_Gabriel_Cruz.src.repositories
         {
             return await _context.Users.FirstOrDefaultAsync(x => x.Rut == rut) is not null;
         }
-        public async Task <bool> ExistUserId(int Id)
+        public async Task <bool> ExistUserId(int ID)
         {
-            return await _context.Users.FindAsync(Id) is not null;
+            return await _context.Users.FindAsync(ID) is not null;
         }
         public async Task <UserDTO> GetUserDTO (string rut)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Rut == rut);
-            if (user is null)
-                return null;
-            else 
+            return new UserDTO
             {
-                return new UserDTO
-                {
-                    Rut = user.Rut,
-                    Nombre = user.Nombre,
-                    Correo = user.Correo,
-                    Genero = user.Genero,
-                    FechaNacimiento = user.FechaNacimiento
-                };
-            }
+                Rut = user.Rut,
+                Nombre = user.Nombre,
+                Correo = user.Correo,
+                Genero = user.Genero,
+                FechaNacimiento = user.FechaNacimiento
+            };
+        }
+        public async Task <UserDTO> GetUserDTOId(int ID)
+        {
+            var user = await _context.Users.FindAsync(ID);
+            return new UserDTO
+            {
+                Rut = user.Rut,
+                Nombre = user.Nombre,
+                Correo = user.Correo,
+                Genero = user.Genero,
+                FechaNacimiento = user.FechaNacimiento
+            };
         }
     }
 }

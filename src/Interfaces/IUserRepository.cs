@@ -9,7 +9,8 @@ namespace Catedra1_Gabriel_Cruz.src.Interfaces
         Task UpdateUser(int ID, UserDTO userDTO);
         Task DeleteUser(int ID);
         Task <bool> ExistUser(string rut);
-        Task <bool> ExistUserId(int Id);
-        Task <UserDTO> GetUserDTO (string rut);
+        Task <bool> ExistUserId(int ID);
+        Task <UserDTO> GetUserDTO(string rut);
+        Task <UserDTO> GetUserDTOId(int ID);
     }
 }
