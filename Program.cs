@@ -13,6 +13,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 using (var scope  = app.Services.CreateScope())
@@ -23,9 +26,6 @@ using (var scope  = app.Services.CreateScope())
 
     DataSeeder.Initializable(context);
 }
-
-builder.Services.AddScoped<IUserRepository,UserRepository>();
-builder.Services.AddControllers();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
